@@ -1,4 +1,12 @@
 #!/bin/bash
+
+set -e
+
+if [ "$EUID" -ne 0 ]; then
+  echo "Run as root"
+  exit
+fi
+
 sudo apt update
 sudo apt install python3 python3-venv python3-pip ffmpeg -y
 
